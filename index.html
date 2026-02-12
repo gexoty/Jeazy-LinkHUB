@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jeazy Fox | Link Hub</title>
+  <meta name="description" content="Официальный линк-хаб Jeazy Fox: YouTube, Twitch, Telegram и другие ссылки." />
+  <meta property="og:title" content="Jeazy Fox | Link Hub" />
+  <meta property="og:description" content="Все мои ссылки в одном месте." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://placehold.co/1200x630/png?text=Jeazy+Fox+Link+Hub" />
+  <meta name="theme-color" content="#0f0f12" />
+
+  <style>
+    :root{
+      --bg: #0b0b10;
+      --bg-soft: #14141c;
+      --card: #181823;
+      --text: #f3f3f7;
+      --muted: #a2a3b3;
+      --line: #2a2b3a;
+      --accent: #ff3b4d;
+      --accent-2: #ff6b78;
+      --radius: 18px;
+      --shadow: 0 12px 30px rgba(0,0,0,.35);
+    }
+
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;
+      padding:0;
+      background:
+        radial-gradient(1200px 700px at 50% -10%, rgba(255,59,77,.12), transparent 60%),
+        radial-gradient(1000px 600px at 90% 0%, rgba(255,107,120,.08), transparent 60%),
+        var(--bg);
+      color:var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+      min-height:100%;
+    }
+
+    .wrap{
+      width:min(760px, 92vw);
+      margin:28px auto 40px;
+    }
+
+    .profile{
+      background: linear-gradient(180deg, rgba(255,59,77,.09), rgba(255,59,77,0) 35%), var(--bg-soft);
+      border:1px solid var(--line);
+      border-radius: calc(var(--radius) + 4px);
+      box-shadow: var(--shadow);
+      padding:22px;
+      display:flex;
+      gap:16px;
+      align-items:center;
+    }
+
+    .avatar{
+      width:88px;
+      height:88px;
+      border-radius:22px;
+      border:1px solid var(--line);
+      object-fit:cover;
+      flex:0 0 auto;
+      background:#202030;
+    }
+
+    .name{
+      margin:0;
+      font-size:1.45rem;
+      line-height:1.2;
+      letter-spacing:.2px;
+    }
+
+    .tag{
+      margin:.35rem 0 0;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .bio{
+      margin:18px 0 0;
+      color:#d4d5e0;
+      line-height:1.55;
+      background: var(--card);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      padding:14px 16px;
+    }
+
+    .links{
+      margin-top:16px;
+      display:grid;
+      gap:12px;
+    }
+
+    .link{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      text-decoration:none;
+      color:var(--text);
+      background: linear-gradient(180deg, rgba(255,255,255,.01), transparent), var(--card);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:14px 16px;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s ease;
+      will-change:transform;
+    }
+
+    .link:hover{
+      transform: translateY(-2px);
+      border-color: rgba(255,59,77,.5);
+      background: linear-gradient(180deg, rgba(255,59,77,.10), rgba(255,59,77,.03)), var(--card);
+      box-shadow: 0 8px 22px rgba(255,59,77,.18);
+    }
+
+    .left{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:0;
+    }
+
+    .icon{
+      width:34px;
+      height:34px;
+      border-radius:11px;
+      display:grid;
+      place-items:center;
+      font-size:15px;
+      font-weight:700;
+      color:#fff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      border:1px solid rgba(255,255,255,.12);
+      flex:0 0 auto;
+    }
+
+    .txt{
+      min-width:0;
+    }
+
+    .title{
+      font-weight:700;
+      letter-spacing:.2px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .sub{
+      color:var(--muted);
+      font-size:.9rem;
+      margin-top:2px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .arrow{
+      color:#c8cada;
+      font-size:1.1rem;
+      margin-left:10px;
+      flex:0 0 auto;
+    }
+
+    .social{
+      margin-top:16px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .chip{
+      text-decoration:none;
+      color:#e8e9f1;
+      background: var(--bg-soft);
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:9px 12px;
+      font-size:.9rem;
+      transition: border-color .2s ease, transform .2s ease;
+    }
+
+    .chip:hover{
+      border-color: rgba(255,59,77,.5);
+      transform: translateY(-1px);
+    }
+
+    footer{
+      margin-top:20px;
+      color:var(--muted);
+      font-size:.85rem;
+      text-align:center;
+    }
+
+    @media (max-width:520px){
+      .profile{
+        padding:16px;
+      }
+      .avatar{
+        width:72px;
+        height:72px;
+        border-radius:18px;
+      }
+      .name{font-size:1.25rem}
+      .bio{font-size:.95rem}
+      .link{padding:12px 13px}
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="profile">
+      <img class="avatar" src="https://placehold.co/200x200/png?text=JF" alt="Аватар Jeazy Fox" />
+      <div>
+        <h1 class="name">Jeazy Fox</h1>
+        <p class="tag">Контент-мейкер • YouTube / Twitch • Furry & lore</p>
+      </div>
+    </section>
+
+    <p class="bio">
+      Привет! Я Jeazy Fox. Тут собраны все мои основные ссылки: ролики, стримы, соцсети и проекты.
+      Добро пожаловать 🦊
+    </p>
+
+    <section class="links">
+      <a class="link" href="https://youtube.com/@your_channel" target="_blank" rel="noopener noreferrer">
+        <div class="left">
+          <div class="icon">YT</div>
+          <div class="txt">
+            <div class="title">YouTube</div>
+            <div class="sub">@your_channel</div>
+          </div>
+        </div>
+        <div class="arrow">↗</div>
+      </a>
+
+      <a class="link" href="https://twitch.tv/your_channel" target="_blank" rel="noopener noreferrer">
+        <div class="left">
+          <div class="icon">TW</div>
+          <div class="txt">
+            <div class="title">Twitch</div>
+            <div class="sub">Стримы и общение</div>
+          </div>
+        </div>
+        <div class="arrow">↗</div>
+      </a>
+
+      <a class="link" href="https://t.me/your_channel" target="_blank" rel="noopener noreferrer">
+        <div class="left">
+          <div class="icon">TG</div>
+          <div class="txt">
+            <div class="title">Telegram</div>
+            <div class="sub">Новости, анонсы, посты</div>
+          </div>
+        </div>
+        <div class="arrow">↗</div>
+      </a>
+
+      <a class="link" href="https://twitter.com/your_nick" target="_blank" rel="noopener noreferrer">
+        <div class="left">
+          <div class="icon">X</div>
+          <div class="txt">
+            <div class="title">X / Twitter</div>
+            <div class="sub">@your_nick</div>
+          </div>
+        </div>
+        <div class="arrow">↗</div>
+      </a>
+
+      <a class="link" href="https://github.com/your_nick" target="_blank" rel="noopener noreferrer">
+        <div class="left">
+          <div class="icon">GH</div>
+          <div class="txt">
+            <div class="title">GitHub</div>
+            <div class="sub">Репозитории и проекты</div>
+          </div>
+        </div>
+        <div class="arrow">↗</div>
+      </a>
+    </section>
+
+    <div class="social">
+      <a class="chip" href="mailto:you@example.com">Почта</a>
+      <a class="chip" href="https://discord.gg/your_invite" target="_blank" rel="noopener noreferrer">Discord</a>
+      <a class="chip" href="https://boosty.to/your_page" target="_blank" rel="noopener noreferrer">Поддержать</a>
+    </div>
+
+    <footer>
+      © <span id="year"></span> Jeazy Fox. All rights reserved.
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
