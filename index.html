@@ -250,6 +250,42 @@
   .audio-vol{width:100%}
 }
 
+
+/* --- audio layout tweak: volume right of title, no description --- */
+.audio-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+.audio-meta{display:flex;align-items:center;min-width:0}
+.audio-inline-vol{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-left:12px;
+  flex:0 0 auto;
+}
+.audio-inline-vol .audio-vol{
+  width:150px;
+}
+.audio-inline-vol .audio-vol-label{
+  min-width:auto;
+  font-size:.9rem;
+  line-height:1;
+}
+.audio-sub{display:none !important;}
+.audio-vol-wrap{display:none !important;}
+@media (max-width:560px){
+  .audio-head{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:8px;
+  }
+  .audio-inline-vol{margin-left:0;}
+  .audio-inline-vol .audio-vol{width:170px;}
+}
+
 </style>
 </head>
 <body>
@@ -307,7 +343,10 @@
   <div class="audio-head">
     <div class="audio-meta">
       <div class="audio-title" id="trackTitle">supermoon</div>
-      <div class="audio-sub">фоновое сопровождение</div>
+    </div>
+    <div class="audio-inline-vol">
+      <span class="audio-vol-label" aria-hidden="true">🔊</span>
+      <input id="vol" class="audio-vol" type="range" min="0" max="1" step="0.01" value="0.8" aria-label="Volume" />
     </div>
   </div>
 
@@ -320,13 +359,7 @@
     <input id="seek" class="audio-seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Progress" />
     <div id="time" class="audio-time">00:00 / 00:00</div>
   </div>
-
-  <div class="audio-vol-wrap">
-    <span class="audio-vol-label">Громкость</span>
-    <input id="vol" class="audio-vol" type="range" min="0" max="1" step="0.01" value="0.8" aria-label="Volume" />
-  </div>
-
-  <audio id="player" preload="metadata">
+<audio id="player" preload="metadata">
     <source src="./assets/music/supermoon.mp3" type="audio/mpeg" />
     Ваш браузер не поддерживает аудио.
   </audio>
