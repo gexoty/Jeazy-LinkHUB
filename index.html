@@ -5,33 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jeazy Fox | Link Hub</title>
   <meta name="description" content="Официальный линк-хаб Jeazy Fox: YouTube, Twitch, Telegram и другие ссылки." />
-  <meta property="og:title" content="Jeazy Fox | Link Hub" />
-  <meta property="og:description" content="Все мои ссылки в одном месте." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://placehold.co/1200x630/png?text=Jeazy+Fox+Link+Hub" />
   <meta name="theme-color" content="#090a0f" />
-
   <style>
     :root{
-      --bg:#090a0f;
-      --bg-2:#0d0f17;
-      --panel:#121522;
-      --panel-2:#171b2a;
-      --text:#f2f4ff;
-      --muted:#9aa1bc;
-      --line:#242a3f;
-      --accent:#ff2f4f;
-      --accent-2:#c1223b;
-      --glow:rgba(255,47,79,.35);
-      --radius:20px;
-      --shadow:0 16px 45px rgba(0,0,0,.45);
+      --bg:#090a0f; --bg-2:#0d0f17; --panel:#121522; --panel-2:#171b2a;
+      --text:#f2f4ff; --muted:#9aa1bc; --line:#242a3f; --accent:#ff2f4f;
+      --radius:20px; --shadow:0 16px 45px rgba(0,0,0,.45); --sidebar-w:280px;
     }
-
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
-      margin:0;
-      color:var(--text);
+      margin:0;color:var(--text);
       font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,sans-serif;
       background:
         radial-gradient(1000px 500px at -10% -10%, rgba(255,47,79,.16), transparent 65%),
@@ -39,272 +23,144 @@
         linear-gradient(180deg, #0a0c13 0%, #090a0f 100%);
       overflow-x:hidden;
     }
-
-    body::before{
-      content:"";
-      position:fixed; inset:0;
-      pointer-events:none;
-      background:
-        repeating-linear-gradient(
-          0deg,
-          rgba(255,255,255,.02) 0px,
-          rgba(255,255,255,.02) 1px,
-          transparent 1px,
-          transparent 3px
-        );
-      opacity:.25;
-      mix-blend-mode:soft-light;
+    .menu-toggle{
+      position:fixed;top:16px;left:16px;z-index:30;
+      border:1px solid var(--line);border-radius:12px;width:44px;height:44px;
+      background:var(--panel);color:#e8ecff;cursor:pointer;box-shadow:var(--shadow);
+      transition:left .28s ease, transform .2s ease, border-color .2s ease;
     }
-
-    .wrap{
-      width:min(840px,92vw);
-      margin:34px auto 48px;
-      position:relative;
-      z-index:1;
+    .menu-toggle:hover{border-color:rgba(255,47,79,.6)}
+    .menu-toggle.open{
+      left:min(calc(var(--sidebar-w) + 12px), calc(86vw + 12px));
+      transform:rotate(90deg);
+      z-index:31;
     }
-
-    .profile{
-      position:relative;
-      display:flex;
-      gap:16px;
-      align-items:center;
-      padding:20px;
-      border:1px solid var(--line);
-      border-radius:calc(var(--radius) + 4px);
-      background:
-        linear-gradient(160deg, rgba(255,47,79,.13), rgba(255,47,79,0) 35%),
-        linear-gradient(340deg, rgba(80,90,255,.10), rgba(80,90,255,0) 40%),
-        var(--bg-2);
-      box-shadow:var(--shadow);
-      overflow:hidden;
-    }
-
-    .profile::after{
-      content:"";
-      position:absolute;
-      inset:auto -30% -70% auto;
-      width:320px; height:320px;
-      border-radius:50%;
-      background:radial-gradient(circle at center, rgba(255,47,79,.2), transparent 65%);
-      filter:blur(8px);
-    }
-
-    .avatar{
-      width:94px; height:94px;
-      border-radius:22px;
-      object-fit:cover;
-      border:1px solid var(--line);
-      background:#1d2235;
-      box-shadow:0 0 0 4px rgba(255,255,255,.02), 0 12px 28px rgba(0,0,0,.35);
-      flex:0 0 auto;
-    }
-
-    .name{
-      margin:0;
-      font-size:1.55rem;
-      letter-spacing:.3px;
-      text-shadow:0 0 18px rgba(255,255,255,.08);
-    }
-
-    .tag{
-      margin:.35rem 0 0;
-      color:var(--muted);
-      font-size:.95rem;
-    }
-
-    .bio{
-      margin:16px 0 0;
-      padding:14px 16px;
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      background:linear-gradient(180deg, rgba(255,255,255,.01), rgba(255,255,255,0)), var(--panel);
-      color:#dbe0ff;
-      line-height:1.6;
-      box-shadow:var(--shadow);
-    }
-
-    .links{
-      margin-top:16px;
-      display:grid;
-      gap:12px;
-    }
-
-    .link{
-      position:relative;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      text-decoration:none;
-      color:var(--text);
-      border:1px solid var(--line);
-      border-radius:16px;
-      padding:14px 16px;
-      background:linear-gradient(180deg, rgba(255,255,255,.015), rgba(255,255,255,0)), var(--panel);
-      transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease, background .2s ease;
-      overflow:hidden;
-    }
-
-    .link::before{
-      content:"";
-      position:absolute;
-      left:-140px;
-      top:0;
-      width:120px;
-      height:100%;
-      transform:skewX(-18deg);
-      background:linear-gradient(90deg, transparent, rgba(255,255,255,.12), transparent);
-      transition:left .45s ease;
-    }
-
-    .link:hover{
-      transform:translateY(-3px);
-      border-color:rgba(255,47,79,.58);
-      box-shadow:0 10px 24px rgba(0,0,0,.35), 0 0 0 1px rgba(255,47,79,.15) inset, 0 0 22px rgba(255,47,79,.18);
-      background:
-        linear-gradient(180deg, rgba(255,47,79,.12), rgba(255,47,79,.03)),
-        var(--panel-2);
-    }
-
-    .link:hover::before{ left:110%; }
-
-    .left{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      min-width:0;
-    }
-
-    .icon{
-      width:38px; height:38px;
-      border-radius:11px;
-      border:1px solid var(--line);
-      object-fit:cover;
-      background:#1d2235;
-      flex:0 0 auto;
-    }
-
-    .txt{min-width:0}
-    .title{
-      font-weight:700;
-      letter-spacing:.2px;
-      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
-    }
-    .sub{
-      margin-top:2px;
-      color:var(--muted);
-      font-size:.9rem;
-      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
-    }
-    .arrow{
-      margin-left:10px;
-      color:#c3c9e6;
-      font-size:1.08rem;
-      flex:0 0 auto;
-    }
-
-    .social{
-      margin-top:16px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-
-    .chip{
-      text-decoration:none;
-      color:#e7ebff;
-      border:1px solid var(--line);
-      border-radius:999px;
-      padding:9px 12px;
-      font-size:.9rem;
-      background:var(--bg-2);
-      transition:all .2s ease;
-    }
-    .chip:hover{
-      transform:translateY(-1px);
-      border-color:rgba(255,47,79,.6);
-      box-shadow:0 0 16px rgba(255,47,79,.2);
-    }
-
-    footer{
-      margin-top:22px;
-      color:var(--muted);
-      text-align:center;
-      font-size:.85rem;
-    }
-
-    @media (max-width:560px){
-      .wrap{margin:20px auto 30px}
-      .profile{padding:15px}
-      .avatar{width:76px;height:76px;border-radius:18px}
-      .name{font-size:1.25rem}
-      .bio{font-size:.95rem}
-      .link{padding:12px 13px}
-    }
+    .backdrop{position:fixed;inset:0;background:rgba(0,0,0,.45);opacity:0;visibility:hidden;transition:.25s;z-index:18}
+    .backdrop.open{opacity:1;visibility:visible}
+    .sidebar{position:fixed;inset:0 auto 0 0;width:var(--sidebar-w);max-width:86vw;background:linear-gradient(180deg, rgba(255,47,79,.08), transparent 30%), var(--bg-2);border-right:1px solid var(--line);transform:translateX(-102%);transition:transform .28s;z-index:22;padding:16px;box-shadow:var(--shadow)}
+    .sidebar.open{transform:translateX(0)}
+    .side-head{display:flex;align-items:center;gap:10px;padding:8px 4px 14px;margin-bottom:10px;border-bottom:1px solid var(--line)}
+    .side-avatar{width:42px;height:42px;border-radius:12px;object-fit:cover;border:1px solid var(--line)}
+    .menu{display:grid;gap:8px}
+    .menu-btn{text-align:left;border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:12px;padding:12px 13px;cursor:pointer;font-weight:600}
+    .menu-btn.active{border-color:rgba(255,47,79,.7);background:linear-gradient(180deg, rgba(255,47,79,.18), rgba(255,47,79,.05)), var(--panel-2)}
+    .wrap{width:min(840px,92vw);margin:34px auto 48px;position:relative;z-index:1}
+    .screen{display:none}.screen.active{display:block;animation:fade .24s ease}
+    @keyframes fade{from{opacity:.35;transform:translateY(3px)}to{opacity:1;transform:none}}
+    .profile{display:flex;gap:16px;align-items:center;padding:20px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(160deg, rgba(255,47,79,.13), rgba(255,47,79,0) 35%),linear-gradient(340deg, rgba(80,90,255,.10), rgba(80,90,255,0) 40%),var(--bg-2);box-shadow:var(--shadow)}
+    .avatar{width:94px;height:94px;border-radius:22px;object-fit:cover;border:1px solid var(--line)}
+    .name{margin:0;font-size:1.55rem}.tag{margin:.35rem 0 0;color:var(--muted)}
+    .bio{margin:16px 0 0;padding:14px 16px;border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);line-height:1.6;box-shadow:var(--shadow)}
+    .links{margin-top:16px;display:grid;gap:12px}
+    .link{display:flex;align-items:center;justify-content:space-between;text-decoration:none;color:var(--text);border:1px solid var(--line);border-radius:16px;padding:14px 16px;background:var(--panel)}
+    .left{display:flex;align-items:center;gap:12px}.icon{width:38px;height:38px;border-radius:11px;border:1px solid var(--line);object-fit:cover}
+    .sub{color:var(--muted);font-size:.9rem}
+    .news-list{margin-top:16px;display:grid;gap:10px}
+    .news-item{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:12px 13px;box-shadow:var(--shadow)}
+    .news-date{font-size:.82rem;color:var(--muted);margin-bottom:6px}
+    .news-title{font-weight:700;margin:0 0 5px}
+    .news-text{margin:0;color:#d6dcff;line-height:1.45}
+    .news-empty,.news-error{margin-top:16px;border:1px dashed var(--line);border-radius:14px;padding:14px;color:var(--muted);background:rgba(255,255,255,.01)}
+    footer{margin-top:22px;color:var(--muted);text-align:center;font-size:.85rem}
+    @media (max-width:560px){.wrap{margin:76px auto 28px}.avatar{width:76px;height:76px;border-radius:18px}}
   </style>
 </head>
 <body>
-  <main class="wrap">
-    <section class="profile">
-      <img class="avatar" src="./assets/pic/avatar.jpg" alt="Аватар Jeazy Fox" />
-      <div>
-        <h1 class="name">Jeazy Fox</h1>
-        <p class="tag">Контент-мейкер • YouTube / Twitch • Furry</p>
-      </div>
-    </section>
-
-    <p class="bio">
-      Привет! Я Jeazy Fox. Тут собраны все мои основные ссылки: ролики, стримы, соцсети и проекты.
-      Добро пожаловать 🦊
-    </p>
-
-    <section class="links">
-      <a class="link" href="https://www.youtube.com/@JeazyTheFox" target="_blank" rel="noopener noreferrer">
-        <div class="left">
-          <img class="icon" src="https://yt3.googleusercontent.com/-tAoT00YfgCUg6kiasBOcpT6Lz6WpdNpo0VDoM7ib9CxpiO_aLxFq4SMBW9F3u6YH2SvoBzFWA=s160-c-k-c0x00ffffff-no-rj" alt="youtube avatar">
-          <div class="txt">
-            <div class="title">YouTube</div>
-            <div class="sub">@JeazyTheFox</div>
-          </div>
-        </div>
-        <div class="arrow">↗</div>
-      </a>
-
-      <a class="link" href="https://www.twitch.tv/jeazy_the_fox" target="_blank" rel="noopener noreferrer">
-        <div class="left">
-          <img class="icon" src="https://static-cdn.jtvnw.net/jtv_user_pictures/4e998103-fb69-416b-9290-1522a939c593-profile_image-70x70.png" alt="twitch avatar">
-          <div class="txt">
-            <div class="title">Twitch</div>
-            <div class="sub">Стримы и общение</div>
-          </div>
-        </div>
-        <div class="arrow">↗</div>
-      </a>
-
-      <a class="link" href="https://t.me/jeazy_fox_chanel" target="_blank" rel="noopener noreferrer">
-        <div class="left">
-          <img class="icon" src="./assets/pic/avatar.jpg" alt="telegram avatar">
-          <div class="txt">
-            <div class="title">Telegram</div>
-            <div class="sub">Новости, анонсы, посты</div>
-          </div>
-        </div>
-        <div class="arrow">↗</div>
-      </a>
-    </section>
-
-    <div class="social">
-      <a class="chip" href="mailto:you@example.com">Почта</a>
-      <a class="chip" href="https://discord.gg/your_invite" target="_blank" rel="noopener noreferrer">Discord</a>
-      <a class="chip" href="https://boosty.to/your_page" target="_blank" rel="noopener noreferrer">Поддержать</a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню">|||</button>
+  <div class="backdrop" id="backdrop"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="side-head">
+      <img class="side-avatar" src="./assets/pic/avatar.jpg" alt="Jeazy Fox" />
+      <div><div style="font-weight:700">Jeazy Fox</div><div style="font-size:.86rem;color:var(--muted)">Навигация</div></div>
     </div>
+    <nav class="menu">
+      <button class="menu-btn active" data-target="home">Главная</button>
+      <button class="menu-btn" data-target="news">Новости</button>
+    </nav>
+  </aside>
 
-    <footer>
-      © <span id="year"></span> Jeazy Fox. All rights reserved.
-    </footer>
+  <main class="wrap">
+    <section class="screen active" id="screen-home">
+      <section class="profile">
+        <img class="avatar" src="./assets/pic/avatar.jpg" alt="Аватар Jeazy Fox" />
+        <div><h1 class="name">Jeazy Fox</h1><p class="tag">Контент-мейкер • YouTube / Twitch • Furry</p></div>
+      </section>
+      <p class="bio">Привет! Я Jeazy Fox. Тут собраны все мои основные ссылки: ролики, стримы, соцсети и проекты.</p>
+      <section class="links">
+        <a class="link" href="https://www.youtube.com/@JeazyTheFox" target="_blank" rel="noopener noreferrer">
+          <div class="left"><img class="icon" src="https://yt3.googleusercontent.com/-tAoT00YfgCUg6kiasBOcpT6Lz6WpdNpo0VDoM7ib9CxpiO_aLxFq4SMBW9F3u6YH2SvoBzFWA=s160-c-k-c0x00ffffff-no-rj" alt=""><div><div style="font-weight:700">YouTube</div><div class="sub">@JeazyTheFox</div></div></div><div>↗</div>
+        </a>
+        <a class="link" href="https://www.twitch.tv/jeazy_the_fox" target="_blank" rel="noopener noreferrer">
+          <div class="left"><img class="icon" src="https://static-cdn.jtvnw.net/jtv_user_pictures/4e998103-fb69-416b-9290-1522a939c593-profile_image-70x70.png" alt=""><div><div style="font-weight:700">Twitch</div><div class="sub">Стримы и общение</div></div></div><div>↗</div>
+        </a>
+        <a class="link" href="https://t.me/jeazy_fox_chanel" target="_blank" rel="noopener noreferrer">
+          <div class="left"><img class="icon" src="./assets/pic/avatar.jpg" alt=""><div><div style="font-weight:700">Telegram</div><div class="sub">Новости, анонсы, посты</div></div></div><div>↗</div>
+        </a>
+      </section>
+    </section>
+
+    <section class="screen" id="screen-news">
+      <section class="profile">
+        <img class="avatar" src="./assets/pic/avatar.jpg" alt="Аватар Jeazy Fox" />
+        <div><h1 class="name">Новости</h1><p class="tag">Лента обновлений и анонсов</p></div>
+      </section>
+      <div class="news-list" id="newsList"></div>
+      <div class="news-empty" id="newsEmpty" style="display:none;">Пока новостей нет. Добавь записи в <code>news.json</code>.</div>
+      <div class="news-error" id="newsError" style="display:none;">Не удалось загрузить <code>news.json</code>. Проверь путь и JSON-формат.</div>
+    </section>
+    <footer>© <span id="year"></span> Jeazy Fox. All rights reserved.</footer>
   </main>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+<script>
+const menuToggle = document.getElementById('menuToggle');
+const sidebar = document.getElementById('sidebar');
+const backdrop = document.getElementById('backdrop');
+const buttons = Array.from(document.querySelectorAll('.menu-btn'));
+const screens = { home: document.getElementById('screen-home'), news: document.getElementById('screen-news') };
+
+function setMenu(open){
+  sidebar.classList.toggle('open', open);
+  backdrop.classList.toggle('open', open);
+  menuToggle.classList.toggle('open', open);
+  menuToggle.textContent = open ? '×' : '|||';
+  menuToggle.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
+}
+menuToggle.addEventListener('click', () => setMenu(!sidebar.classList.contains('open')));
+backdrop.addEventListener('click', () => setMenu(false));
+buttons.forEach(btn => btn.addEventListener('click', () => {
+  const target = btn.dataset.target;
+  buttons.forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  Object.values(screens).forEach(s => s.classList.remove('active'));
+  screens[target].classList.add('active');
+  setMenu(false);
+}));
+document.getElementById('year').textContent = new Date().getFullYear();
+
+async function loadNews(){
+  const list = document.getElementById('newsList');
+  const empty = document.getElementById('newsEmpty');
+  const err = document.getElementById('newsError');
+  list.innerHTML = ''; empty.style.display = 'none'; err.style.display = 'none';
+  try{
+    const res = await fetch('./news.json', {cache:'no-store'});
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    const news = await res.json();
+    if(!Array.isArray(news) || news.length === 0){ empty.style.display = 'block'; return; }
+    news.sort((a,b)=> new Date(b.date) - new Date(a.date));
+    for(const item of news){
+      const card = document.createElement('article');
+      card.className = 'news-item';
+      card.innerHTML = `
+        <div class="news-date">${item.date ?? ''}</div>
+        <h3 class="news-title">${item.title ?? 'Без названия'}</h3>
+        <p class="news-text">${item.text ?? ''}</p>
+      `;
+      list.appendChild(card);
+    }
+  }catch(e){ err.style.display = 'block'; }
+}
+loadNews();
+</script>
 </body>
 </html>
