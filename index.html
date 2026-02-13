@@ -111,6 +111,13 @@
     .news-title{font-weight:700;margin:0 0 5px}
     .news-text{margin:0;color:#d6dcff;line-height:1.45}
     .news-empty,.news-error{margin-top:16px;border:1px dashed var(--line);border-radius:14px;padding:14px;color:var(--muted);background:rgba(255,255,255,.01)}
+    
+    /* --- Mini audio player --- */
+    .audio-card{margin-top:16px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg, rgba(255,255,255,.015), rgba(255,255,255,0)), var(--panel);box-shadow:var(--shadow);padding:12px 14px}
+    .audio-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
+    .audio-title{font-weight:700;font-size:.98rem}
+    .audio-sub{color:var(--muted);font-size:.85rem}
+    .audio-card audio{width:100%;height:38px;border-radius:10px;outline:none}
     footer{margin-top:22px;color:var(--muted);text-align:center;font-size:.85rem}
     @media (max-width:560px){.wrap{margin:76px auto 28px}.avatar{width:76px;height:76px;border-radius:18px}.profile{flex-wrap:wrap}.support-btn{margin-left:0;width:100%;justify-content:center}}
   </style>
@@ -164,6 +171,20 @@
       <div class="news-empty" id="newsEmpty" style="display:none;">Пока новостей нет. Добавь записи в <code>news.json</code>.</div>
       <div class="news-error" id="newsError" style="display:none;">Не удалось загрузить <code>news.json</code>. Проверь путь и JSON-формат.</div>
     </section>
+
+    <section class="audio-card">
+      <div class="audio-top">
+        <div>
+          <div class="audio-title">Сейчас играет</div>
+          <div class="audio-sub">supermoon.mp3</div>
+        </div>
+      </div>
+      <audio controls preload="none">
+        <source src="./assets/music/supermoon.mp3" type="audio/mpeg" />
+        Ваш браузер не поддерживает аудио.
+      </audio>
+    </section>
+
     <footer>© <span id="year"></span> Jeazy Fox. All barks reserved.</footer>
   </main>
 
@@ -218,5 +239,8 @@ async function loadNews(){
 }
 loadNews();
 </script>
+</body>
+</html>
+
 </body>
 </html>
